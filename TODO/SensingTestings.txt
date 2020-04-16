@@ -1,0 +1,2 @@
+Damaging:
+	1. Check when controller pawn was DAMAGED
