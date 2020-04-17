@@ -1,6 +1,13 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{9AA82E35-47B2-367D-CAEC-3BA1883C70A7}",
+	"EngineAssociation": "4.24",
 	"Category": "",
-	"Description": ""
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "ProjControllerQuick",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
 }
