@@ -4,7 +4,7 @@
 * Actor that has collision and mesh.
 */
 
-#include "GameFramework/Pawn.h"
+#include "GameFramework/Character.h"
 #include "PawnBase/IMyPawnInterface.h"
 #include "MyEnemyPawnBase.generated.h"
 
@@ -21,7 +21,7 @@ class UPawnSensingComponent;
 
 UCLASS()
 class AMyEnemyPawnBase : 
-	public APawn
+	public ACharacter
 ,	public IMyPawnInterface
 {
 	GENERATED_BODY()
@@ -44,36 +44,13 @@ public:
 	virtual UPawnSensingComponent* GetSensingComponent_Implementation() const override;
 	// ~ IMyPawnBase End
 
-	UFUNCTION(BlueprintPure, Category = Components)
-	USceneComponent* GetRootSceneComponent() const { return RootSceneComponent; }
-
-	UFUNCTION(BlueprintPure, Category = Camera)
-	UCameraComponent* GetCamera() const { return Camera; }
-
 	UFUNCTION(BlueprintPure, Category = Visual)
-	UStaticMeshComponent* GetMesh() const { return Mesh; }
-
-	UFUNCTION(BlueprintPure, Category = Collision)
-	USphereComponent* GetProxSphere() const { return ProxSphere; }
+	UStaticMeshComponent* GetMesh() const { return MyMesh; }
 
 private:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Components, Meta=(AllowPrivateAccess = true))
-	USceneComponent* RootSceneComponent = nullptr;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Camera, Meta=(AllowPrivateAccess = true))
-	UCameraComponent* Camera = nullptr;
-	void InitCameraAndSpringArm(USceneComponent* InAttachTo);
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Camera, Meta=(AllowPrivateAccess = true))
-	USpringArmComponent* SpringArm = nullptr;
-
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Visual, Meta=(AllowPrivateAccess = true))
-	UStaticMeshComponent* Mesh = nullptr;
+	UStaticMeshComponent* MyMesh = nullptr;
 	void InitMesh(USceneComponent* InAttachTo);
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Collision, Meta=(AllowPrivateAccess = true))
-	USphereComponent* ProxSphere = nullptr;
-	void InitProxSphere(USceneComponent* InAttachTo);
 	
 	/** GetSensing*/
 	UFUNCTION(BlueprintPure, Category=Sensing)

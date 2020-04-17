@@ -17,6 +17,7 @@ public:
 	UBlackboardComponent* GetBlackboardComponent() const { return BlackboardComponent; }
 	
 private:
+	void InitBlackboard();
 
 	/** BlackboardComponent*/
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Meta=(AllowPrivateAccess=true))

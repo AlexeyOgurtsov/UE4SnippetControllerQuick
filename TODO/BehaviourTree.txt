@@ -1,6 +1,13 @@
-1. Basic behaviour tree anatomy
-	1.1. C++ behaviour tree base
+1. Running, Stopping behavior trees
+1.1. Communication between BehaviorTree and enemy constroller
+2. Tasks
+
+3. Conditional execution
+3.1. Passing state (is pawn visible, within radius etc.)
+3.2. 
 
 
+4. Decorator
+5. Service
 
-2. Custom task (in C++)
+6. Blackboard

@@ -1,0 +1,1 @@
+Q. Why cannot set blackboard value from Actor?

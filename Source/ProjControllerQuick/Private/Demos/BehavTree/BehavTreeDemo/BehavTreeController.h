@@ -17,7 +17,8 @@ class ABehavTreeController : public AMyAIControllerBase
 public:
 	ABehavTreeController();
 
-	virtual void BeginPlay() override;
+	virtual void BeginPlay() override;	
+	virtual void OnPossess(APawn* NewPawn) override;
 	
 	/** GetBlackboardComponent*/
 	UFUNCTION(BlueprintPure, Category=BehavTreeDemo)
@@ -49,4 +50,8 @@ private:
 	/** Test bevahior tree*/
 	UPROPERTY()
 	UBehaviorTree* TestBehavTree = nullptr;	
+
+private:
+	void OnWePossessedAndStartedToPlay();
+	bool bBeginPlayStarted = false;
 };

@@ -16,15 +16,38 @@ ABehavTreeController::ABehavTreeController()
 
 	LoadBlackboardComponentAtCtor();
 	LoadBehavTreeAtCtor();
+
+	InitBlackboardComponent();
 }
 
 void ABehavTreeController::BeginPlay()
 {
 	M_LOGFUNC();
-	Super::BeginPlay();
-	
-	InitBehavTree();
-	InitBlackboardComponent();
+	Super::BeginPlay();		
+
+	bBeginPlayStarted = true;
+
+	if (GetPawn() != nullptr)
+	{
+		OnWePossessedAndStartedToPlay();
+	}
+}
+
+void ABehavTreeController::OnPossess(APawn* NewPawn)
+{
+	Super::OnPossess(NewPawn);
+	M_LOGFUNC();
+
+	if (bBeginPlayStarted)
+	{
+		OnWePossessedAndStartedToPlay();
+	}
+}
+
+void ABehavTreeController::OnWePossessedAndStartedToPlay()
+{
+	M_LOGFUNC();
+	RunBehaviorTree(TestBehavTree);
 }
 
 void ABehavTreeController::InitBlackboardComponent()
@@ -37,7 +60,7 @@ void ABehavTreeController::InitBlackboardComponent()
 void ABehavTreeController::InitBehavTree()
 {
 	M_LOGFUNC();
-	BehavTreeComponent->StartTree(*TestBehavTree);
+	//BehavTreeComponent->StartTree(*TestBehavTree);
 }
 
 
