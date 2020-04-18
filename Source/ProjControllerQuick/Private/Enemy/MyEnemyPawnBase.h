@@ -15,6 +15,7 @@ class UStaticMeshComponent;
 class USphereComponent;
 class AMyAIControllerBase;
 
+class UQuickWeaponComponent;
 class UMyPawnImpl;
 
 class UPawnSensingComponent;
@@ -44,8 +45,16 @@ public:
 	virtual UPawnSensingComponent* GetSensingComponent_Implementation() const override;
 	// ~ IMyPawnBase End
 
+	// ~Weapon Begin
+	UFUNCTION(BlueprintPure, Category = Weapon)
+	UQuickWeaponComponent* GetWeaponComponent() const { return WeaponComponent; }
+
+	virtual void PawnStartFire(uint8 Mode) override;
+	// ~Weapon End
+
 	UFUNCTION(BlueprintPure, Category = Visual)
 	UStaticMeshComponent* GetMesh() const { return MyMesh; }
+
 
 private:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Visual, Meta=(AllowPrivateAccess = true))
@@ -54,10 +63,7 @@ private:
 	
 	/** GetSensing*/
 	UFUNCTION(BlueprintPure, Category=Sensing)
-	UPawnSensingComponent* GetSensing() const
-	{
-		return Sensing;
-	}
+	UPawnSensingComponent* GetSensing() const { return Sensing; }
 
 private:
 	// ~Sensing Begin
@@ -71,6 +77,13 @@ private:
 
 	void InitializeSensingComponent();	
 	// ~Sensing End
+	
+	// ~Weapon Begin
+	void InitWeaponComponent();
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = Weapon, Meta=(AllowPrivateAccess=true))
+	UQuickWeaponComponent* WeaponComponent = nullptr;
+	// ~Weapon End
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Meta=(AllowPrivateAccess=true))
 	UMyPawnImpl* Impl = nullptr;

@@ -1,5 +1,11 @@
 #include "MyEnemyPawnBase.h"
 #include "EnemyBaseConfig.h"
+#include "Controller/MyAIControllerBase.h"
+
+#include "PawnBase/MyPawnImpl.h"
+#include "Util/Weapon/QuickWeaponComponent/QuickWeaponComponent.h"
+#include "Util/Weapon/QuickWeaponComponent/QuickWeaponTypesLib.h"
+
 #include "Util/Core/LogUtilLib.h"
 
 #include "GameFramework/SpringArmComponent.h"
@@ -14,14 +20,12 @@
 // WARN
 #include "Perception/PawnSensingComponent.h"
 
-#include "PawnBase/MyPawnImpl.h"
-#include "Controller/MyAIControllerBase.h"
-
 AMyEnemyPawnBase::AMyEnemyPawnBase()
 {
 	Impl = UMyPawnImpl::CreateInitialized(this, TEXT("Impl"));
 
 	InitMesh(RootComponent);	
+	InitWeaponComponent();
 
 	InitializeSensingComponent();
 }
@@ -35,10 +39,23 @@ void AMyEnemyPawnBase::BeginPlay()
 {
 	M_LOGFUNC();
 	Super::BeginPlay();
+	WeaponComponent->ReAttachToSockets();
 	if( GetAIControllerBase() )
 	{
 		GetAIControllerBase()->OnPawnBeginPlay(this);
 	}
+}
+
+void AMyEnemyPawnBase::InitWeaponComponent()
+{
+	checkf(MyMesh, TEXT("When calling %s mesh must be initialized"), TEXT(__FUNCTION__));
+	WeaponComponent = CreateDefaultSubobject<UQuickWeaponComponent>(TEXT("QuickWeaponComponent"));
+	bool bInitialized = UQuickWeaponTypesLib::InitializePrimaryWeapon(WeaponComponent, MyMesh->GetFName());
+}
+
+void AMyEnemyPawnBase::PawnStartFire(uint8 Mode)
+{
+	bool bSucceeded = WeaponComponent->FireByIndex(Mode);
 }
 
 void AMyEnemyPawnBase::InitMesh(USceneComponent* InAttachTo)
@@ -47,7 +64,7 @@ void AMyEnemyPawnBase::InitMesh(USceneComponent* InAttachTo)
 	M_LOG_ERROR_IF( ! MeshFinder.Succeeded(), TEXT("Default mesh (\"%s\") NOT found"), EnemyBaseConfig::Default::MESH_ASSET_PATH);
 
 	{
-		MyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
+		MyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MyMesh"));
 
 		if(MeshFinder.Succeeded())
 		{

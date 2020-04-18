@@ -31,7 +31,7 @@ void UMyPawnImpl::SetNewDamageState(float const InNewDamage, bool const bInNotif
 		MyEvents->OnDamageStateChanged.Broadcast();
 	}
 	
-	if(HitState.Hits < 0.0F)
+	if(HitState.Hits <= 0.0F)
 	{
 		M_LOG(TEXT("Damage is below zero, destroying"));
 		bool const bDestroyed = GetOwner()->Destroy(true, true);
