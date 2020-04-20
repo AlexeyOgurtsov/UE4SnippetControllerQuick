@@ -19,6 +19,8 @@ struct FBTLogTaskMemory
 
 UBTTask_Log::UBTTask_Log()
 {
+	NodeName = "LogTest";
+
 	bEnableTickLogging = true;
 	LogTickPeriod = 10;
 	MaxLogTickLogs = 10;

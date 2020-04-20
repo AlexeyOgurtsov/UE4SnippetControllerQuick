@@ -1,0 +1,4 @@
+-----------------
+	GetRandomReachablePointInRadius:
+	1) In C++?
+	2) Why fails? Works only with navmesh?

@@ -1,1 +1,7 @@
-Q. Why cannot set blackboard value from Actor?
+1. Why cannot set blackboard value from Actor?
+2. Try to set blackboard value from AI Controller?
+3. From Task / Decorator etc.
+4. Observe test
+
+-----------------------------------------------------
+Setup blackboard

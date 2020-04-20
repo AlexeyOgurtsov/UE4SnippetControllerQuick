@@ -1,0 +1,2 @@
+1. Add pawn class that initializes with AI Controller that runs behavior tree and initializes blackboard
+(to facilitate behavior tree task tests!)
