@@ -1,7 +1,11 @@
 1. Why cannot set blackboard value from Actor?
 2. Try to set blackboard value from AI Controller?
 3. From Task / Decorator etc.
-4. Observe test
+	3.1. +DONE: From Task successfully set
+	3.2. From Service
+
+5. Observe test
+	4.1. Try to observe setting up blackboard key value
 
 -----------------------------------------------------
 Setup blackboard

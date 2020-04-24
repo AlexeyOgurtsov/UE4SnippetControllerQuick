@@ -1,5 +1,4 @@
 C:
-start /B SetTarg.bat
 set location=C:\U4L\Snip\Controller
 set projectname=ProjControllerQuick
 set projectdirname=ProjControllerQuick

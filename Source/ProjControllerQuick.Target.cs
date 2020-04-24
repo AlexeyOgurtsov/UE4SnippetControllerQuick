@@ -10,5 +10,8 @@ public class ProjControllerQuickTarget : TargetRules
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.Latest;
 		ExtraModuleNames.AddRange( new string[] { "ProjControllerQuick" } );
+
+		bUseUnityBuild = false;
+		bUsePCHFiles = false;
 	}
 }

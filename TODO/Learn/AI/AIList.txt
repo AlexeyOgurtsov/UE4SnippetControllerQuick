@@ -1,0 +1,23 @@
+---------- Elementary pathfinding goals
+1. Run away from pawn (farther is better)
+2. Find pawn
+3. Run to cover point
+4. Run to point of the given type
+5. Run to higher point
+
+---------- Elementary firing goals
+1. Aiming at target
+2. Fire at target
+3. Attack when see pawn
+
+---------- Simple scenarios - move only
+1. If no enemy pawn in radius, walk around, search for items,
+otherwise, run away from pawn (maybe to the given point).
+If still at "hide-away" point and there's enemy - move to ALT hideaway point.
+
+2. Get to point - primary goal. Get to it if there's no enemy here.
+
+---------- Simple scenarios - move only and firing
+1. Hide away from player only if hit points level is low,
+ get to it and fire otherwise.
+2. 

@@ -10,5 +10,8 @@ public class ProjControllerQuickEditorTarget : TargetRules
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.Latest;
 		ExtraModuleNames.AddRange( new string[] { "ProjControllerQuick" } );
+
+		bUseUnityBuild = false;
+		bUsePCHFiles = false;
 	}
 }

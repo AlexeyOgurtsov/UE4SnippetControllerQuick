@@ -7,7 +7,7 @@ UCLASS()
 class AMyBehavTreePawn : public AMyPawnWithAIController
 {
 	GENERATED_BODY()
-
+	
 public:
 	AMyBehavTreePawn();
 
